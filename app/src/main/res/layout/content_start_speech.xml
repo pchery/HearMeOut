@@ -2,21 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="100dp"
+        android:layout_width="325dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+
         android:max="4000"
-        android:progressDrawable="@drawable/progressbar" />
+        android:layout_marginTop="100dp"
+        android:progressDrawable="@drawable/progressbar"
+
+        android:layout_weight="0.01" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer1"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.01"
+        android:layout_marginTop="50dp"
+        android:textSize="100dp"
+        android:textColor="#FF686B"/>
 
     <Button
         android:id="@+id/button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp" />
+        android:layout_margin="50dp"
+        android:background="@drawable/roundbtn"/>
 
 </LinearLayout>

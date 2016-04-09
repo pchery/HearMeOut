@@ -1,5 +1,15 @@
 package carlhacks16.hearmeout;
 
+
+//for the timer
+
+
+import android.os.SystemClock;
+import android.view.Menu;
+import android.view.View.OnClickListener;
+import android.widget.Chronometer;
+
+
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -25,12 +35,13 @@ import android.widget.Toast;
 public class StartSpeechActivity extends Activity {
 
     public static final int SAMPLE_RATE = 16000;
+    private Chronometer mydChronometer;
 
     private AudioRecord mRecorder;
     private File mRecording;
     private short[] mBuffer;
-    private final String startRecordingLabel = "Start recording";
-    private final String stopRecordingLabel = "Stop recording";
+    private final String startRecordingLabel = "Start";
+    private final String stopRecordingLabel = "Stop";
     private boolean mIsRecording = false;
     private ProgressBar mProgressBar;
 
@@ -42,6 +53,8 @@ public class StartSpeechActivity extends Activity {
         initRecorder();
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        mydChronometer=(Chronometer) findViewById(R.id.chronometer1);
 
         final Button button = (Button) findViewById(R.id.button);
         button.setText(startRecordingLabel);
@@ -55,6 +68,9 @@ public class StartSpeechActivity extends Activity {
                     mRecorder.startRecording();
                     mRecording = getFile("raw");
                     startBufferedWrite(mRecording);
+                    mydChronometer.setBase(SystemClock.elapsedRealtime());
+                    mydChronometer.start();
+
                 }
                 else {
                     button.setText(startRecordingLabel);
@@ -66,6 +82,8 @@ public class StartSpeechActivity extends Activity {
                     } catch (IOException e) {
                         Toast.makeText(StartSpeechActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
+                    mydChronometer.stop();
+
                     Toast.makeText(StartSpeechActivity.this, "Recorded to " + waveFile.getName(),
                             Toast.LENGTH_SHORT).show();
                 }
