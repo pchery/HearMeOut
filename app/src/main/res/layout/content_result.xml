@@ -12,4 +12,75 @@
     tools:context="carlhacks16.hearmeout.Result"
     tools:showIn="@layout/activity_result">
 
+    <Button
+        android:background="#a5a7a9"
+        android:textColor="@android:color/white"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:text="TRY AGAIN"
+        android:id="@+id/button4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="90dp" />
+
+    <Button
+        android:textColor="@android:color/white"
+        android:background="#0c6638"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:text="SAVE"
+        android:textSize="40px"
+        android:id="@+id/button5"
+        android:layout_alignTop="@+id/button4"
+        android:layout_toRightOf="@+id/button4"
+        android:layout_toEndOf="@+id/button4" />
+
+    <Button
+        android:background="@color/colorOrangeLight"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:text="SPEED"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/button6"
+        android:textSize="40px"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:background="@color/colorOrangeLight"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:text="VOLUME"
+        android:id="@+id/button7"
+        android:textSize="40px"
+        android:layout_below="@+id/button6"
+        android:layout_marginBottom="5dp"
+        android:layout_alignLeft="@+id/button6"
+        android:layout_alignStart="@+id/button6" />
+
+    <Button
+        android:background="@color/colorOrangeLight"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:text="MOVEMENT"
+        android:textSize="40px"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/button8"
+        android:layout_below="@+id/button7"
+        android:layout_alignLeft="@+id/button7"
+        android:layout_alignStart="@+id/button7" />
+
+    <Button
+        android:background="@color/colorOrangeLight"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:text="FILLERS"
+        android:textSize="40px"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/button9"
+        android:layout_below="@+id/button8"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
