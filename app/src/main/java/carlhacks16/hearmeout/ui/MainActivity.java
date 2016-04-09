@@ -1,4 +1,4 @@
-package carlhacks16.hearmeout;
+package carlhacks16.hearmeout.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -11,6 +11,10 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.Button;
 import android.app.Activity;
+
+
+import carlhacks16.hearmeout.R;
+import carlhacks16.hearmeout.StartSpeechActivity;
 
 public class MainActivity extends AppCompatActivity {
 
