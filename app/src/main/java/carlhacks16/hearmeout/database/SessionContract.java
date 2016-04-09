@@ -33,8 +33,6 @@ public class SessionContract{
                         Session.VOLUME + REAL_TYPE + COMMA_SEP +
                         Session.MOVEMENT + REAL_TYPE + COMMA_SEP +
                         Session.FILLERS + REAL_TYPE +
-                        //Budget.COLUMN_NAME_CREATION_DATE + TEXT_TYPE + COMMA_SEP +
-                        //Budget.COLUMN_NAME_HISTORY + BLOB_TYPE +
                         ");";
 
         public static final String SQL_DELETE_ENTRIES =
