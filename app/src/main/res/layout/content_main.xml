@@ -16,7 +16,7 @@
         android:id="@+id/button"
         android:layout_width="800dp"
         android:layout_height="400dp"
-
+        android:background="@mipmap/startButton"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="171dp" />
