@@ -14,31 +14,31 @@
         android:layout_height="wrap_content"
         android:text="Play"
         android:id="@+id/playButton"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp"
         android:onClick="playAudio"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:layout_alignTop="@+id/recordButton"
+        android:layout_toRightOf="@+id/recordButton"
+        android:layout_toEndOf="@+id/recordButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Record"
         android:id="@+id/recordButton"
-        android:layout_below="@+id/playButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="51dp"
         android:onClick="recordAudio"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:layout_alignTop="@+id/stopButton"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stop"
         android:id="@+id/stopButton"
-        android:layout_below="@+id/recordButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
         android:onClick="stopAudio"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:layout_marginBottom="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/recordButton"
+        android:layout_toStartOf="@+id/recordButton" />
 </RelativeLayout>
