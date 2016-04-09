@@ -12,32 +12,25 @@
     tools:context=".ui.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hear Me Out"
-        android:textSize="30dp"
-        android:id="@+id/textView"
-        android:layout_marginTop="58dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:background="#fbb03f"
+        android:textColor="@android:color/white"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
         android:text="Start Speech"
         android:textSize="35dp"
         android:id="@+id/button"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="136dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tutorial"
         android:id="@+id/button2"
-        android:layout_marginTop="85dp"
-        android:layout_below="@+id/button"
+        android:layout_alignTop="@+id/button3"
         android:layout_alignLeft="@+id/button"
         android:layout_alignStart="@+id/button" />
 
@@ -47,7 +40,7 @@
         android:layout_height="wrap_content"
         android:text="Settings"
         android:id="@+id/button3"
-        android:layout_alignTop="@+id/button2"
-        android:layout_alignRight="@+id/button"
-        android:layout_alignEnd="@+id/button" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
