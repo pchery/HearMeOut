@@ -23,7 +23,7 @@ public class Result1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result2);
+        setContentView(R.layout.activity_result1);
 
         mFillersButton = (Button) findViewById(R.id.fillersButton);
         mSpeedButton = (Button) findViewById(R.id.speedButton);
@@ -48,6 +48,21 @@ public class Result1 extends AppCompatActivity {
             public void onClick(View v) {
 
                 startActivity(new Intent(Result1.this, StartSpeechActivity.class));
+
+            }
+        });
+
+        mSpeedButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        mFillersButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
 
             }
         });

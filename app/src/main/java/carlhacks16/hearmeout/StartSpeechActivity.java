@@ -1,6 +1,7 @@
 package carlhacks16.hearmeout;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -13,7 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.getpebble.android.kit.PebbleKit;
+import com.getpebble.android.kit.util.PebbleDictionary;
 
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
@@ -26,6 +31,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
+import java.util.UUID;
 
 import carlhacks16.hearmeout.database.DatabaseHelper;
 import carlhacks16.hearmeout.database.SessionContract;
@@ -39,14 +46,17 @@ public class StartSpeechActivity extends Activity {
 
     public static final int SAMPLE_RATE = 16000;
     private Chronometer mydChronometer;
-
+    private PebbleKit.PebbleDataReceiver pebbleReceiver;
     private AudioRecord mRecorder;
     private File mRecording;
     private short[] mBuffer;
+    protected TextView movementDisplay;
     private final String startRecordingLabel = "Start";
     private final String stopRecordingLabel = "Stop";
     private boolean mIsRecording = false;
     private ProgressBar mProgressBar;
+    private static final UUID SPORTS_UUID = UUID.fromString("4403bc13-03db-450f-bdb7-95e3739089b0");
+
 
     private Button rbutton;
     private List<Integer> ampArray;
@@ -61,6 +71,7 @@ public class StartSpeechActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_speech);
         rbutton=(Button)findViewById(R.id.button10);
+        movementDisplay = (TextView) findViewById(R.id.movementDisplay);
         mDbHelper = new DatabaseHelper(this);
         averageAmplitude=0;
         ampArray=new ArrayList<Integer>();
@@ -85,6 +96,7 @@ public class StartSpeechActivity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(final View v) {
+                                          PebbleKit.startAppOnPebble(v.getContext(), SPORTS_UUID);
                                           if (!mIsRecording) {
                                               button.setText(stopRecordingLabel);
                                               mIsRecording = true;
@@ -95,6 +107,7 @@ public class StartSpeechActivity extends Activity {
                                               mydChronometer.start();
 
                                           } else {
+                                              PebbleKit.closeAppOnPebble(v.getContext(), SPORTS_UUID);
                                               button.setText(startRecordingLabel);
                                               mIsRecording = false;
                                               mRecorder.stop();
@@ -137,6 +150,35 @@ public class StartSpeechActivity extends Activity {
         );
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        boolean isConnected = PebbleKit.isWatchConnected(this);
+        Toast.makeText(this, "Pebble " + (isConnected ? "is" : "is not") + " connected!", Toast.LENGTH_LONG).show();
+
+
+        if (pebbleReceiver == null) {
+            pebbleReceiver = new PebbleKit.PebbleDataReceiver(SPORTS_UUID) {
+                @Override
+                public void receiveData(Context context, int id, PebbleDictionary data) {
+                    // Always ACKnowledge the last message to prevent timeouts
+                    PebbleKit.sendAckToPebble(getApplicationContext(), id);
+                    final int AppKey = 0;
+                    // Get action and display
+                    int state = data.getInteger(AppKey).intValue();
+
+                    System.out.println("////////////////////////////////////////////////" + state);
+                    movementDisplay.setText(String.valueOf(state));
+                    mDbHelper.updateSession(state, SessionContract.Session.MOVEMENT);
+
+                }
+
+            };
+        }
+        PebbleKit.registerReceivedDataHandler(this, pebbleReceiver);
+
+    }
     @Override
     public void onDestroy() {
         mRecorder.release();

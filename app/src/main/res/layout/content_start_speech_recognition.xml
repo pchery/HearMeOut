@@ -5,21 +5,7 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Launch Pebble"
-        android:id="@+id/pebbleLaunch"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop Pebble"
-        android:id="@+id/pebbleStop"
-        android:layout_above="@+id/pebbleLaunch"
-        android:layout_alignParentLeft="true"/>
     <Button
         android:id="@+id/recordButton"
         android:layout_width="110dp"
@@ -27,9 +13,7 @@
         android:textSize="20dp"
         android:background="@drawable/round"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/pebbleStop"
-        android:layout_alignLeft="@+id/pebbleLaunch"
-        android:layout_alignStart="@+id/pebbleLaunch" />
+         />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,7 +41,7 @@
         android:text="How well did you do? - See Results."
         android:background="@drawable/round3"
         android:layout_marginTop="20dp"
-        android:id="@+id/button10"
+        android:id="@+id/button103"
         android:layout_gravity="center_horizontal"
         android:layout_centerVertical="true"
         android:layout_weight="0.01" />

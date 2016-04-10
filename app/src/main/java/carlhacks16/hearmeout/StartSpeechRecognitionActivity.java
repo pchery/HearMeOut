@@ -35,10 +35,7 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
     private PebbleKit.PebbleDataReceiver pebbleReceiver;
     protected DatabaseHelper mDbHelper;
     protected Button recordButton;
-    protected Button pebbleLaunch;
     protected Chronometer mChronometer;
-    protected Button pebbleStop;
-    protected TextView movementDisplay;
     protected float mStartTime;
     protected float mEndTime;
     protected int mWordCount;
@@ -53,45 +50,15 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_speech_recognition);
         mDbHelper = new DatabaseHelper(this);
         recordButton = (Button) findViewById(R.id.recordButton);
-        pebbleLaunch = (Button) findViewById(R.id.pebbleLaunch);
-        pebbleStop = (Button) findViewById(R.id.pebbleStop);
-        movementDisplay = (TextView) findViewById(R.id.movementDisplay);
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
-        mNextButton = (Button) findViewById(R.id.button10);
+        mNextButton = (Button) findViewById(R.id.button103);
 
-
-        pebbleLaunch.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //check this
-                PebbleKit.startAppOnPebble(v.getContext(), SPORTS_UUID);
-
-                //movementDisplay.setText("HELLO");
-
-            }
-
-        });
-
-        pebbleStop.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                PebbleKit.closeAppOnPebble(v.getContext(), SPORTS_UUID);
-
-
-            }
-
-        });
 
         recordButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-
-                PebbleKit.startAppOnPebble(v.getContext(), SPORTS_UUID);
-                mChronometer.setBase(SystemClock.elapsedRealtime());
+                mChronometer.setText("0");
                 promptSpeechInput();
             }
         });
@@ -100,6 +67,7 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(StartSpeechRecognitionActivity.this, Result1.class);
                 startActivity(intent);
 
@@ -112,29 +80,6 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        boolean isConnected = PebbleKit.isWatchConnected(this);
-        Toast.makeText(this, "Pebble " + (isConnected ? "is" : "is not") + " connected!", Toast.LENGTH_LONG).show();
-
-
-        if (pebbleReceiver == null) {
-            pebbleReceiver = new PebbleKit.PebbleDataReceiver(SPORTS_UUID) {
-                @Override
-                public void receiveData(Context context, int id, PebbleDictionary data) {
-                    // Always ACKnowledge the last message to prevent timeouts
-                    PebbleKit.sendAckToPebble(getApplicationContext(), id);
-                    final int AppKey = 0;
-                    // Get action and display
-                    int state = data.getInteger(AppKey).intValue();
-
-                    System.out.println("////////////////////////////////////////////////" + state);
-                    movementDisplay.setText(String.valueOf(state));
-                    mDbHelper.updateSession(state, SessionContract.Session.MOVEMENT);
-
-                }
-
-            };
-        }
-        PebbleKit.registerReceivedDataHandler(this, pebbleReceiver);
     }
 
 
@@ -143,7 +88,7 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
      * Showing google speech input dialog
      * */
     private void promptSpeechInput() {
-        mStartTime = SystemClock.currentThreadTimeMillis();
+        mChronometer.setBase(SystemClock.elapsedRealtime());
         mChronometer.start();
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -167,16 +112,12 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        mEndTime = SystemClock.currentThreadTimeMillis();
+        long timeElapsed = (SystemClock.elapsedRealtime() - mChronometer.getBase())/1000;
         mChronometer.stop();
-        PebbleKit.closeAppOnPebble(this, SPORTS_UUID);
 
-        float timeElapsed = mEndTime - mStartTime;
-        int speed = (int) (mWordCount / timeElapsed);
 
-        mDbHelper.updateSession(speed, SessionContract.Session.SPEED);
+        //float timeElapsed = mEndTime - mStartTime;
 
-        System.out.println("//////////////////////////////////////// TIME: " + timeElapsed + " ///// SPEED: " + speed);
         switch (requestCode) {
             case VOICE_RECOGNITION_REQUEST_CODE: {
                 if (resultCode == RESULT_OK && null != data) {
@@ -199,6 +140,10 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
                     }
                     mDbHelper.updateSession(filler, SessionContract.Session.FILLERS);
                     //}
+                    int speed = (int) (mWordCount / timeElapsed) * 60;
+                    mDbHelper.updateSession(speed, SessionContract.Session.SPEED);
+
+                    System.out.println("//////////////////////////////////////// TIME: " + timeElapsed + " ///// SPEED: " + speed);
                     System.out.println("//////////////////////////     NUM WORDS: " + mWordCount + "   ////////////" );
                     System.out.println("//////////////////////////////    " + filler+ "    /////////////////");
                     Toast.makeText(this, result.get(0), Toast.LENGTH_LONG).show();
