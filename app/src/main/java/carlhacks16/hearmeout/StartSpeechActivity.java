@@ -1,15 +1,19 @@
 package carlhacks16.hearmeout;
 
-
-//for the timer
-
-
+import android.app.Activity;
 import android.content.Intent;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
+import android.media.MediaRecorder;
+import android.os.Bundle;
+import android.os.Environment;
 import android.os.SystemClock;
-import android.view.Menu;
-import android.view.View.OnClickListener;
+import android.text.format.Time;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Chronometer;
-
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
 import java.io.DataInputStream;
@@ -20,27 +24,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.ArrayList;
+import java.util.List;
 
-import android.app.Activity;
-import android.media.AudioFormat;
-import android.media.AudioRecord;
-import android.media.MediaRecorder;
-import android.os.Bundle;
-import android.os.Environment;
-import android.text.format.Time;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.Toast;
-
-//import android.R;
 import carlhacks16.hearmeout.R;
-
-
 import carlhacks16.hearmeout.Result;
+import carlhacks16.hearmeout.SpeechRecognitionHelper;
 import carlhacks16.hearmeout.database.DatabaseHelper;
+import carlhacks16.hearmeout.database.SessionContract;
+import carlhacks16.hearmeout.models.Session;
 
 public class StartSpeechActivity extends Activity {
+
+
+
+    private static SpeechRecognitionHelper speechRecognitionHelper;
+    public static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     public static final int SAMPLE_RATE = 16000;
     private Chronometer mydChronometer;
@@ -52,17 +51,30 @@ public class StartSpeechActivity extends Activity {
     private final String stopRecordingLabel = "Stop";
     private boolean mIsRecording = false;
     private ProgressBar mProgressBar;
-    protected DatabaseHelper mDbHelper;
 
     private Button rbutton;
+    private List<Integer> ampArray;
+    private int counter;
+    private int total;
+    //private int averagescore;
+    protected DatabaseHelper mDbHelper;
+    public int averageAmplitude;
 
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_speech);
         rbutton=(Button)findViewById(R.id.button10);
-        rbutton.setVisibility(View.INVISIBLE);
         mDbHelper = new DatabaseHelper(this);
+        averageAmplitude=0;
+        ampArray=new ArrayList<Integer>();
+        counter=0;
+        total=0;
+        //averagescore=0;
+
+
+        rbutton.setVisibility(View.INVISIBLE);
+
         initRecorder();
 
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -74,7 +86,7 @@ public class StartSpeechActivity extends Activity {
 
 
 
-        button.setOnClickListener(new OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
                                       @Override
                                       public void onClick(final View v) {
                                           if (!mIsRecording) {
@@ -111,11 +123,17 @@ public class StartSpeechActivity extends Activity {
 
 
         );
-        rbutton.setOnClickListener(new OnClickListener()
+        rbutton.setOnClickListener(new View.OnClickListener()
                                    {
                                        @Override
                                        public void onClick(final View v) {
-                                           startActivity(new Intent(StartSpeechActivity.this, Result.class));
+                                           Intent i=new Intent(StartSpeechActivity.this, Result.class);
+                                           i.putExtra("volumescore", mDbHelper.getLatestSession().getVolume());
+                                           startActivity(i);
+
+
+
+
                                        }
 
 
@@ -145,17 +163,29 @@ public class StartSpeechActivity extends Activity {
                 try {
                     output = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(file)));
                     while (mIsRecording) {
+
                         double sum = 0;
                         int readSize = mRecorder.read(mBuffer, 0, mBuffer.length);
                         for (int i = 0; i < readSize; i++) {
                             output.writeShort(mBuffer[i]);
+
                             sum += mBuffer[i] * mBuffer[i];
                         }
                         if (readSize > 0) {
                             final double amplitude = sum / readSize;
-                            mProgressBar.setProgress((int) Math.sqrt(amplitude));
+                            counter=counter+1;
+                            total=total+(int)(Math.sqrt(amplitude / 2));
+                            mProgressBar.setProgress((int) Math.sqrt(amplitude / 2));
+
+
                         }
+                        // to do: a way to calculate the average and then return a score -> amplitude maximum: 4000
+
+
+
                     }
+                    calculateAverage(total, counter);
+
                 } catch (IOException e) {
                     Toast.makeText(StartSpeechActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 } finally {
@@ -178,6 +208,23 @@ public class StartSpeechActivity extends Activity {
                 }
             }
         }).start();
+    }
+
+//    public int getScore(){
+//        return averagescore;
+//    }
+
+
+    private void calculateAverage(int int1, int int2){
+        averageAmplitude=int1/int2;
+        //Log.v("*******","+"+averageAmplitude);
+        int averagescore=(int)(10-Math.abs((1000-averageAmplitude)/100));
+        //Log.v("*******","+"+averagescore);
+
+        Session session = new Session();
+        mDbHelper.createSession(session);
+        mDbHelper.updateSession(averagescore, SessionContract.Session.VOLUME);
+
     }
 
     private void rawToWave(final File rawFile, final File waveFile) throws IOException {
@@ -216,6 +263,7 @@ public class StartSpeechActivity extends Activity {
             ByteBuffer.wrap(rawData).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().get(shorts);
             ByteBuffer bytes = ByteBuffer.allocate(shorts.length * 2);
             for (short s : shorts) {
+
                 bytes.putShort(s);
             }
             output.write(bytes.array());
@@ -249,4 +297,5 @@ public class StartSpeechActivity extends Activity {
             output.write(value.charAt(i));
         }
     }
+
 }

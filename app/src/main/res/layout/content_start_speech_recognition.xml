@@ -17,27 +17,7 @@
         android:layout_toLeftOf="@+id/pebbleLaunch"
         android:layout_toStartOf="@+id/pebbleLaunch" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        android:id="@+id/playButton"
-        android:onClick="recordAudio"
-        android:textAllCaps="false"
-        android:layout_below="@+id/stopButton"
-        android:layout_alignLeft="@+id/stopButton"
-        android:layout_alignStart="@+id/stopButton"
-        android:layout_marginTop="63dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop"
-        android:id="@+id/stopButton"
-        android:onClick="recordAudio"
-        android:textAllCaps="false"
-        android:layout_below="@+id/movementDisplay"
-        android:layout_centerHorizontal="true" />
 
 
     <Button
@@ -60,9 +40,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Movement"
-        android:id="@+id/movementDisplay"
-        android:layout_above="@+id/recordButton"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/movementDisplay" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

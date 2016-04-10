@@ -137,6 +137,16 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return history;
 
     }
+
+    public void updateSession(int value, String columnName){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(columnName, value);
+        String selection = "id = (SELECT MAX(id) FROM " + SessionContract.Session.TABLE_NAME + ")";
+        db.update(SessionContract.Session.TABLE_NAME, values, selection, null);
+
+    }
 }
 
 

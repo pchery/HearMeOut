@@ -10,6 +10,13 @@ public class Session {
     private int fillers;
     private int movements;
 
+    public Session(){
+        this.volume = 0;
+        this.speed = 0;
+        this.fillers = 0;
+        this.movements = 0;
+    }
+
     public Session(int volume, int speed, int fillers, int movements ){
         this.volume = volume;
         this.speed = speed;

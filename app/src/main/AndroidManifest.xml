@@ -30,14 +30,12 @@
         </activity>
         <activity
             android:name=".StartSpeechRecognitionActivity"
-            android:label="@string/title_activity_start_speech_recognition">
-        </activity>
+            android:label="@string/title_activity_start_speech_recognition"/>
 
 
         <activity
             android:name=".StartSpeechActivity"
-            android:label="@string/title_activity_start_speech">
-        </activity>
+            android:label="@string/title_activity_start_speech"/>
 
         <!--<activity-->
             <!--android:name=".Setting"-->
@@ -48,9 +46,9 @@
         <activity
             android:name=".Result"
             android:label="@string/title_activity_result"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"/>
 
-        </activity>
+
     </application>
 
 </manifest>
