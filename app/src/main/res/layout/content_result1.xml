@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:layout_alignTop="@+id/nextButton"
+        android:layout_toLeftOf="@+id/nextButton"
+        android:layout_toStartOf="@+id/nextButton" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="62dp"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="290dp"
+        android:layout_height="130dp"
+        android:id="@+id/imageView2"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/fillersButton"
+        android:layout_alignStart="@+id/fillersButton" />
+
+    <Button
+        android:background="@color/colorOrangeLight"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:text="FILLERS"
+        android:textSize="40px"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/fillersButton"
+        android:layout_below="@+id/movementButton"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:background="@color/colorOrangeLight"
+        android:layout_width="320dp"
+        android:layout_height="40dp"
+        android:text="SPEED"
+        android:layout_marginBottom="3dp"
+        android:id="@+id/speedButton"
+        android:textSize="40px"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</LinearLayout>
