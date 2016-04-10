@@ -31,6 +31,8 @@ public class Result2 extends AppCompatActivity {
         int volume = mDbHelper.getLatestSession().getVolume();
         int movements = mDbHelper.getLatestSession().getMovements();
 
+        System.out.println("MOVEMENTS: " + movements);
+
 
         mVolumeButton.setText("VOLUME: " + Integer.toString(volume) + "/10");
         mMovementButton.setText("MOVEMENT: " + Integer.toString(movements) + "/10");

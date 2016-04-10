@@ -5,39 +5,6 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Launch Pebble"
-        android:id="@+id/pebbleLaunch"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop Pebble"
-        android:id="@+id/pebbleStop"
-        android:layout_above="@+id/pebbleLaunch"
-        android:layout_alignParentLeft="true"/>
-    <Button
-        android:id="@+id/recordButton"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:textSize="20dp"
-        android:background="@drawable/round"
-        android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/pebbleStop"
-        android:layout_alignLeft="@+id/pebbleLaunch"
-        android:layout_alignStart="@+id/pebbleLaunch" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Movement"
-        android:id="@+id/movementDisplay"
-        android:layout_centerHorizontal="true" />
-
     <Chronometer
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,19 +15,64 @@
         android:textSize="100dp"
         android:textColor="#fbb03f"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/recordButton"
-        android:layout_alignStart="@+id/recordButton" />
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/recordButton"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:textSize="20dp"
+        android:background="@drawable/round"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="48dp"
+        android:layout_centerHorizontal="true"
+
+        android:layout_below="@+id/chronometer"
+/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Launch Pebble"
+        android:id="@+id/pebbleLaunch"
+        android:layout_alignTop="@+id/pebbleStop"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Stop Pebble"
+        android:id="@+id/pebbleStop"
+        android:layout_below="@+id/recordButton"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="28dp"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movement"
+        android:id="@+id/movementDisplay"
+        android:layout_centerHorizontal="true" />
+
+
 
     <Button
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:text="How well did you do? - See Results."
         android:background="@drawable/round3"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/recordButton"
         android:id="@+id/button10"
         android:layout_gravity="center_horizontal"
         android:layout_centerVertical="true"
-        android:layout_weight="0.01" />
+        android:layout_weight="0.01"
+        android:layout_centerHorizontal="true"
+        />
 
 
 

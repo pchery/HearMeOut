@@ -29,6 +29,7 @@ import com.getpebble.android.kit.util.PebbleDictionary;
 
 import carlhacks16.hearmeout.database.DatabaseHelper;
 import carlhacks16.hearmeout.database.SessionContract;
+import carlhacks16.hearmeout.models.Session;
 
 public class StartSpeechRecognitionActivity extends AppCompatActivity {
 
@@ -92,6 +93,8 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
 
                 PebbleKit.startAppOnPebble(v.getContext(), SPORTS_UUID);
                 mChronometer.setBase(SystemClock.elapsedRealtime());
+                Session session = new Session();
+                mDbHelper.createSession(session);
                 promptSpeechInput();
             }
         });

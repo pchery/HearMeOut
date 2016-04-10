@@ -23,13 +23,15 @@ public class Result1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result2);
+        setContentView(R.layout.activity_result1);
 
         mFillersButton = (Button) findViewById(R.id.fillersButton);
         mSpeedButton = (Button) findViewById(R.id.speedButton);
         mNextButton = (Button) findViewById(R.id.nextButton);
 
         mDbHelper = new DatabaseHelper(this);
+
+
 
         if(mDbHelper.count(SessionContract.Session.TABLE_NAME) > 1) {
             int speed = mDbHelper.getLatestSession().getSpeed();
