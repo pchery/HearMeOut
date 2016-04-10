@@ -1,35 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <EditText
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_gravity="center_horizontal" />
+        android:layout_height="match_parent">
 
-    <EditText
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="26"
+            android:textColor="@color/colorOrange"
+            android:textSize="320px"
+            android:textStyle="bold"
+            android:layout_marginLeft="80dp"
+            android:id="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="/40"
+            android:textSize="80px"
+            android:id="@+id/textView3"
+            android:layout_ghravity="right|top"
+            android:layout_column="12" />
+    </TableRow>
+
+
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText2" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Time Limit:"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Last Session:"
+            android:id="@+id/textView4"
+            android:layout_column="0" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="3.10.2016"
+            android:id="@+id/textView5"
+            android:layout_column="0" />
+
+        <ZoomButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/zoomButton"
+            android:layout_column="13" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Sorry, bud, you got some work to do. Ready to go to be heard?"
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/textView6"
+            android:layout_column="0" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_column="0" />
+    </TableRow>
 
     <Button
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:background="@mipmap/startButton"
-        android:id="@+id/button4"
-        android:layout_gravity="center"
-        android:layout_marginTop="150dp" />
+        android:layout_width="261dp"
+        android:layout_height="110dp"
+        android:id="@+id/button5"
+        android:layout_gravity="bottom"
+        android:background="@drawable/startButton"/>
 
-
-</LinearLayout>
+</TableLayout>
