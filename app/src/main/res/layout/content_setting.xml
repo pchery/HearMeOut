@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Small"
+        android:id="@+id/checkBox2"
+        android:layout_marginTop="63dp"
+        android:checked="false"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Large"
+        android:id="@+id/checkBox"
+        android:checked="false"
+        android:layout_below="@+id/checkBox2"
+        android:layout_alignLeft="@+id/checkBox2"
+        android:layout_alignStart="@+id/checkBox2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Room Size "
+        android:id="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Live Feedback Mode"
+        android:id="@+id/switch1"
+        android:layout_marginTop="124dp"
+        android:checked="false"
+        android:layout_below="@+id/checkBox"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
