@@ -82,14 +82,4 @@
         android:layout_below="@+id/button8"
         android:layout_centerHorizontal="true" />
 
-    <com.jjoe64.graphview.helper.GraphViewXML
-        android:layout_width="match_parent"
-        android:layout_height="100dip"
-        app:seriesData="0=5;2=5;3=0;4=2"
-        app:seriesType="line"
-        app:seriesColor="#ee0000"
-        android:layout_marginBottom="54dp"
-        android:layout_above="@+id/button10"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 </RelativeLayout>
