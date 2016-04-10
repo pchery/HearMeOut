@@ -4,6 +4,7 @@ package carlhacks16.hearmeout;
 //for the timer
 
 
+import android.content.Intent;
 import android.os.SystemClock;
 import android.view.Menu;
 import android.view.View.OnClickListener;
@@ -32,6 +33,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import carlhacks16.hearmeout.Result;
+
 public class StartSpeechActivity extends Activity {
 
     public static final int SAMPLE_RATE = 16000;
@@ -45,10 +48,14 @@ public class StartSpeechActivity extends Activity {
     private boolean mIsRecording = false;
     private ProgressBar mProgressBar;
 
+    private Button rbutton;
+
     @Override
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_speech);
+        rbutton=(Button)findViewById(R.id.button10);
+        rbutton.setVisibility(View.INVISIBLE);
 
         initRecorder();
 
@@ -59,36 +66,55 @@ public class StartSpeechActivity extends Activity {
         final Button button = (Button) findViewById(R.id.button);
         button.setText(startRecordingLabel);
 
+
+
         button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                if (!mIsRecording) {
-                    button.setText(stopRecordingLabel);
-                    mIsRecording = true;
-                    mRecorder.startRecording();
-                    mRecording = getFile("raw");
-                    startBufferedWrite(mRecording);
-                    mydChronometer.setBase(SystemClock.elapsedRealtime());
-                    mydChronometer.start();
+                                      @Override
+                                      public void onClick(final View v) {
+                                          if (!mIsRecording) {
+                                              button.setText(stopRecordingLabel);
+                                              mIsRecording = true;
+                                              mRecorder.startRecording();
+                                              mRecording = getFile("raw");
+                                              startBufferedWrite(mRecording);
+                                              mydChronometer.setBase(SystemClock.elapsedRealtime());
+                                              mydChronometer.start();
 
-                }
-                else {
-                    button.setText(startRecordingLabel);
-                    mIsRecording = false;
-                    mRecorder.stop();
-                    File waveFile = getFile("wav");
-                    try {
-                        rawToWave(mRecording, waveFile);
-                    } catch (IOException e) {
-                        Toast.makeText(StartSpeechActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                    mydChronometer.stop();
+                                          } else {
+                                              button.setText(startRecordingLabel);
+                                              mIsRecording = false;
+                                              mRecorder.stop();
+                                              File waveFile = getFile("wav");
+                                              try {
+                                                  rawToWave(mRecording, waveFile);
+                                              } catch (IOException e) {
+                                                  Toast.makeText(StartSpeechActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                              }
+                                              mydChronometer.stop();
+                                              if (rbutton.getVisibility() == View.INVISIBLE) {
+                                                  rbutton.setVisibility(View.VISIBLE);
+                                              }
 
-                    Toast.makeText(StartSpeechActivity.this, "Recorded to " + waveFile.getName(),
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                                              Toast.makeText(StartSpeechActivity.this, "Recorded to " + waveFile.getName(),
+                                                      Toast.LENGTH_SHORT).show();
+
+
+                                          }
+                                      }
+                                  }
+
+
+        );
+        rbutton.setOnClickListener(new View.OnClickListener()
+                                   {
+                                       @Override
+                                       public void onClick(final View v) {
+                                           startActivity(new Intent(StartSpeechActivity.this, Result.class));
+                                       }
+
+
+                                   }
+        );
     }
 
     @Override

@@ -11,7 +11,6 @@
         android:layout_width="325dp"
         android:layout_height="70dp"
         android:layout_gravity="center_horizontal"
-
         android:max="4000"
         android:layout_marginTop="100dp"
         android:progressDrawable="@drawable/progressbar"
@@ -24,15 +23,28 @@
         android:id="@+id/chronometer1"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.01"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:textSize="100dp"
-        android:textColor="#FF686B"/>
+        android:textColor="#fbb03f"/>
+
 
     <Button
         android:id="@+id/button"
-        android:layout_width="fill_parent"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:background="@drawable/roundbtn"/>
+        android:text="How well did you do? - See Results."
+        android:background="@drawable/round3"
+        android:layout_marginTop="20dp"
+        android:id="@+id/button10"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.01" />
 
 </LinearLayout>
