@@ -9,8 +9,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -40,10 +40,7 @@
         <!-- android:label="@string/title_activity_setting" -->
         <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
 
-        <activity
-            android:name=".Result"
-            android:label="@string/title_activity_result"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".ui.Intro"
             android:label="@string/title_activity_intro"
@@ -56,6 +53,19 @@
             android:name=".ui.StepTwo"
             android:label="@string/title_activity_step_two"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Result2"
+            android:label="@string/title_activity_result1"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".Result1"
+            android:label="@string/title_activity_result1"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+
+
+
     </application>
 
 </manifest>

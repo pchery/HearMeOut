@@ -27,9 +27,6 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
 
-import carlhacks16.hearmeout.R;
-import carlhacks16.hearmeout.Result;
-import carlhacks16.hearmeout.SpeechRecognitionHelper;
 import carlhacks16.hearmeout.database.DatabaseHelper;
 import carlhacks16.hearmeout.database.SessionContract;
 import carlhacks16.hearmeout.models.Session;
@@ -38,7 +35,6 @@ public class StartSpeechActivity extends Activity {
 
 
 
-    private static SpeechRecognitionHelper speechRecognitionHelper;
     public static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     public static final int SAMPLE_RATE = 16000;
@@ -127,7 +123,7 @@ public class StartSpeechActivity extends Activity {
                                    {
                                        @Override
                                        public void onClick(final View v) {
-                                           Intent i=new Intent(StartSpeechActivity.this, Result.class);
+                                           Intent i=new Intent(StartSpeechActivity.this, Result2.class);
                                            i.putExtra("volumescore", mDbHelper.getLatestSession().getVolume());
                                            startActivity(i);
 

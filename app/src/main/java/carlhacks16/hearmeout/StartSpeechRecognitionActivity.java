@@ -31,7 +31,7 @@ import carlhacks16.hearmeout.database.DatabaseHelper;
 import carlhacks16.hearmeout.database.SessionContract;
 
 public class StartSpeechRecognitionActivity extends AppCompatActivity {
-    
+
     private PebbleKit.PebbleDataReceiver pebbleReceiver;
     protected DatabaseHelper mDbHelper;
     protected Button recordButton;
@@ -42,9 +42,9 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
     protected float mStartTime;
     protected float mEndTime;
     protected int mWordCount;
+    protected Button mNextButton;
     protected StringTokenizer tokenizer;
     private static final UUID SPORTS_UUID = UUID.fromString("4403bc13-03db-450f-bdb7-95e3739089b0");
-    private static SpeechRecognitionHelper speechRecognitionHelper;
     public static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     @Override
@@ -57,6 +57,7 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
         pebbleStop = (Button) findViewById(R.id.pebbleStop);
         movementDisplay = (TextView) findViewById(R.id.movementDisplay);
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
+        mNextButton = (Button) findViewById(R.id.button10);
 
 
         pebbleLaunch.setOnClickListener(new View.OnClickListener() {
@@ -89,8 +90,19 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                PebbleKit.startAppOnPebble(v.getContext(), SPORTS_UUID);
                 mChronometer.setBase(SystemClock.elapsedRealtime());
                 promptSpeechInput();
+            }
+        });
+
+        mNextButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartSpeechRecognitionActivity.this, Result1.class);
+                startActivity(intent);
+
             }
         });
 
@@ -114,7 +126,7 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
                     // Get action and display
                     int state = data.getInteger(AppKey).intValue();
 
-                    System.out.println("////////////////////////////////////////////////"+state);
+                    System.out.println("////////////////////////////////////////////////" + state);
                     movementDisplay.setText(String.valueOf(state));
                     mDbHelper.updateSession(state, SessionContract.Session.MOVEMENT);
 
@@ -157,6 +169,8 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
 
         mEndTime = SystemClock.currentThreadTimeMillis();
         mChronometer.stop();
+        PebbleKit.closeAppOnPebble(this, SPORTS_UUID);
+
         float timeElapsed = mEndTime - mStartTime;
         int speed = (int) (mWordCount / timeElapsed);
 

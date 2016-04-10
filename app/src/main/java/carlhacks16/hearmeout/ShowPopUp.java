@@ -32,9 +32,9 @@ public class ShowPopUp extends Activity {
         mainLayout = new LinearLayout(this);
         tv = new TextView(this);
         speedBut = (Button) findViewById(R.id.button);
-        fillerBut = (Button) findViewById(R.id.button8);
-        volumeBut = (Button) findViewById(R.id.button6);
-        movementBut = (Button) findViewById(R.id.button7);
+        fillerBut = (Button) findViewById(R.id.movementButton);
+        volumeBut = (Button) findViewById(R.id.speedButton);
+        movementBut = (Button) findViewById(R.id.volumeButton);
 
         //Speed
         speedBut.setOnClickListener(new OnClickListener() {
