@@ -22,6 +22,7 @@ public class SessionContract{
         public static final String FILLERS = "fillers";
 
         private static final String TEXT_TYPE = " TEXT";
+        private static final String INT_TYPE =  " INT";
         private static final String REAL_TYPE = " REAL";
         private static final String BLOB_TYPE = " BLOB";
         private static final String COMMA_SEP = ",";
@@ -30,13 +31,15 @@ public class SessionContract{
                 "CREATE TABLE " + Session.TABLE_NAME + " (" +
                         Session.ID + " INTEGER PRIMARY KEY, " +
                         Session.SPEED + REAL_TYPE + COMMA_SEP +
-                        Session.VOLUME + REAL_TYPE + COMMA_SEP +
-                        Session.MOVEMENT + REAL_TYPE + COMMA_SEP +
-                        Session.FILLERS + REAL_TYPE +
+                        Session.VOLUME + INT_TYPE + COMMA_SEP +
+                        Session.MOVEMENT + INT_TYPE + COMMA_SEP +
+                        Session.FILLERS + INT_TYPE +
                         ");";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + Session.TABLE_NAME;
+
+
 
 
     }

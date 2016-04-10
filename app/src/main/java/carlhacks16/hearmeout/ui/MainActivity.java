@@ -10,11 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.Button;
-import android.app.Activity;
 
 
 import carlhacks16.hearmeout.R;
-import carlhacks16.hearmeout.StartSpeechActivity;
+import carlhacks16.hearmeout.StartSpeechRecognitionActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(MainActivity.this, StartSpeechActivity.class));
+                startActivity(new Intent(MainActivity.this, StartSpeechRecognitionActivity.class));
 
             }
         });

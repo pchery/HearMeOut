@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartSpeechActivity"
+            android:name=".StartSpeechRecognitionActivity"
             android:label="@string/title_activity_start_speech">
             </activity>
     <activity

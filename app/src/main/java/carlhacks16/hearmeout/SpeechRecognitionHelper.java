@@ -19,7 +19,7 @@ import java.util.List;
  * Created by paulchery on 4/9/16.
  */
 public class SpeechRecognitionHelper extends Activity{
-    private static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
+    public static final int VOICE_RECOGNITION_REQUEST_CODE = 1234;
 
     /**
      * Running the recognition process. Checks availability of recognition Activity,
@@ -28,11 +28,12 @@ public class SpeechRecognitionHelper extends Activity{
      *
      * @param callingActivity = Activity, that initializing recognition process
      */
-    public static void run(Activity callingActivity) {
+    public void run(Activity callingActivity) {
         // check if there is recognition Activity
         if (isSpeechRecognitionActivityPresented(callingActivity) == true) {
             // if yes – running recognition
-            startRecognitionActivity(callingActivity);
+            System.out.println("//////////////////////////////////////////////////");
+            //startActivityForResult(callingActivity, VOICE_RECOGNITION_REQUEST_CODE);
         } else {
             // if no, then showing notification to install Voice Search
             Toast.makeText(callingActivity, "In order to activate speech recognition you must install \"Google Voice Search\"", Toast.LENGTH_LONG).show();
@@ -66,7 +67,8 @@ public class SpeechRecognitionHelper extends Activity{
      * Send an Intent with request on speech
      * @param callerActivity  - Activity, that initiated a request
      */
-    private static void startRecognitionActivity(Activity callerActivity) {
+    /*
+    private static void startRecognitionActivity(Activity callerActivity, int requestCode) {
 
         // creating an Intent with “RecognizerIntent.ACTION_RECOGNIZE_SPEECH” action
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
@@ -79,7 +81,8 @@ public class SpeechRecognitionHelper extends Activity{
 
         // start Activity ant waiting the result
         callerActivity.startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
-    }
+        //System.out.println("//////////////////////////////////////////////////////////////");
+    }*/
 
     /**
      * Asking the permission for installing Google Voice Search.
@@ -123,6 +126,7 @@ public class SpeechRecognitionHelper extends Activity{
 
         // if it’s speech recognition results
         // and process finished ok
+        System.out.println("///////////////////////////////////////////////////////////////////////////////");
         if (requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode == RESULT_OK) {
 
             // receiving a result in string array
@@ -131,12 +135,13 @@ public class SpeechRecognitionHelper extends Activity{
             ArrayList matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
             // in “matches” array we holding a results... let’s show the most relevant
-            if (matches.size() > 0){
-                Toast.makeText(this, (int) matches.get(0), Toast.LENGTH_LONG).show();
+            if (true){
+                //Toast.makeText(this, "HELLO", Toast.LENGTH_LONG).show();
             }
         }
-
+        System.out.println("sdokfjsdofij");
         super.onActivityResult(requestCode, resultCode, data);
     }
+
 
 }
