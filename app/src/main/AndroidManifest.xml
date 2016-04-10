@@ -40,10 +40,6 @@
             android:name=".Result"
             android:label="@string/title_activity_result"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".Pop"
-            android:theme="@style/AppTheme.CustomTheme">
-        </activity>
     </application>
 
 </manifest>
