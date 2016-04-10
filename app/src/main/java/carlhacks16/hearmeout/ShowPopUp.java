@@ -11,7 +11,7 @@ import android.widget.*;
 /**
  * Created by gimminju on 4/9/16.
  */
-public class ShowPopUp extends Activity{
+public class ShowPopUp extends Activity {
 
     PopupWindow popUp;
     LinearLayout layout;
@@ -31,16 +31,16 @@ public class ShowPopUp extends Activity{
         layout = new LinearLayout(this);
         mainLayout = new LinearLayout(this);
         tv = new TextView(this);
-        speedBut = (Button)findViewById(R.id.button);
-        fillerBut = (Button)findViewById(R.id.button8) ;
-        volumeBut = (Button)findViewById(R.id.button6) ;
-        movementBut = (Button)findViewById(R.id.button7) ;
+        speedBut = (Button) findViewById(R.id.button);
+        fillerBut = (Button) findViewById(R.id.button8);
+        volumeBut = (Button) findViewById(R.id.button6);
+        movementBut = (Button) findViewById(R.id.button7);
 
         //Speed
         speedBut.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(click) {
+                if (click) {
                     popUp.showAtLocation(mainLayout, Gravity.BOTTOM, 10, 10);
                     popUp.update(50, 50, 300, 80);
                     click = false;
@@ -61,7 +61,7 @@ public class ShowPopUp extends Activity{
         fillerBut.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(click) {
+                if (click) {
                     popUp.showAtLocation(mainLayout, Gravity.BOTTOM, 10, 10);
                     popUp.update(50, 50, 300, 80);
                     click = false;
@@ -82,7 +82,7 @@ public class ShowPopUp extends Activity{
         volumeBut.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(click) {
+                if (click) {
                     popUp.showAtLocation(mainLayout, Gravity.BOTTOM, 10, 10);
                     popUp.update(50, 50, 300, 80);
                     click = false;
@@ -103,7 +103,7 @@ public class ShowPopUp extends Activity{
         movementBut.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(click) {
+                if (click) {
                     popUp.showAtLocation(mainLayout, Gravity.BOTTOM, 10, 10);
                     popUp.update(50, 50, 300, 80);
                     click = false;

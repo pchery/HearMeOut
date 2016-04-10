@@ -15,8 +15,8 @@
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
         android:background="@drawable/tryagain"
         android:layout_alignTop="@+id/button11"
         android:layout_toLeftOf="@+id/button11"
@@ -25,22 +25,22 @@
 
     <Button
         android:id="@+id/button11"
-        android:layout_width="150dp"
-        android:layout_height="80dp"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
         android:background="@drawable/save"
-        android:layout_marginRight="25dp"
+        android:layout_marginRight="55dp"
         android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="76dp" />
+        android:layout_marginBottom="60dp" />
 
     <Button
         android:background="@color/colorOrangeLight"
         android:layout_width="320dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:text="SPEED"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:id="@+id/button6"
         android:textSize="40px"
         android:layout_marginTop="10dp"
@@ -50,22 +50,22 @@
     <Button
         android:background="@color/colorOrangeLight"
         android:layout_width="320dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:text="VOLUME"
         android:id="@+id/button7"
         android:textSize="40px"
         android:layout_below="@+id/button6"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:layout_alignLeft="@+id/button6"
         android:layout_alignStart="@+id/button6" />
 
     <Button
         android:background="@color/colorOrangeLight"
         android:layout_width="320dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:text="MOVEMENT"
         android:textSize="40px"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:id="@+id/button8"
         android:layout_below="@+id/button7"
         android:layout_alignLeft="@+id/button7"
@@ -74,11 +74,20 @@
     <Button
         android:background="@color/colorOrangeLight"
         android:layout_width="320dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:text="FILLERS"
         android:textSize="40px"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         android:id="@+id/button9"
         android:layout_below="@+id/button8"
         android:layout_centerHorizontal="true" />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:id="@+id/graph"
+        android:layout_above="@+id/button10"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"/>
 </RelativeLayout>
