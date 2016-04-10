@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import carlhacks16.hearmeout.database.DatabaseHelper;
 import carlhacks16.hearmeout.database.SessionContract;
+import carlhacks16.hearmeout.ui.StepTwo;
 
 /**
  * Created by paulchery on 4/10/16.
@@ -31,6 +32,8 @@ public class Result1 extends AppCompatActivity {
 
         mDbHelper = new DatabaseHelper(this);
 
+
+
         if(mDbHelper.count(SessionContract.Session.TABLE_NAME) > 1) {
             int speed = mDbHelper.getLatestSession().getSpeed();
             int fillers = mDbHelper.getLatestSession().getFillers();
@@ -47,7 +50,7 @@ public class Result1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Result1.this, StartSpeechActivity.class));
+                startActivity(new Intent(Result1.this, StepTwo.class));
 
             }
         });

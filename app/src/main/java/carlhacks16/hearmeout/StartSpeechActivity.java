@@ -70,8 +70,7 @@ public class StartSpeechActivity extends Activity {
     public void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_speech);
-        rbutton=(Button)findViewById(R.id.button10);
-        movementDisplay = (TextView) findViewById(R.id.movementDisplay);
+        rbutton=(Button)findViewById(R.id.button11);
         mDbHelper = new DatabaseHelper(this);
         averageAmplitude=0;
         ampArray=new ArrayList<Integer>();
@@ -259,8 +258,7 @@ public class StartSpeechActivity extends Activity {
         int averagescore=(int)(10-Math.abs((1000-averageAmplitude)/100));
         //Log.v("*******","+"+averagescore);
 
-        Session session = new Session();
-        mDbHelper.createSession(session);
+
         mDbHelper.updateSession(averagescore, SessionContract.Session.VOLUME);
 
     }

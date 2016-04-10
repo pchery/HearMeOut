@@ -23,16 +23,14 @@ import android.media.MediaPlayer;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.getpebble.android.kit.Constants;
-import com.getpebble.android.kit.PebbleKit;
-import com.getpebble.android.kit.util.PebbleDictionary;
+
 
 import carlhacks16.hearmeout.database.DatabaseHelper;
 import carlhacks16.hearmeout.database.SessionContract;
+import carlhacks16.hearmeout.models.Session;
 
 public class StartSpeechRecognitionActivity extends AppCompatActivity {
 
-    private PebbleKit.PebbleDataReceiver pebbleReceiver;
     protected DatabaseHelper mDbHelper;
     protected Button recordButton;
     protected Chronometer mChronometer;
@@ -51,14 +49,18 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
         mDbHelper = new DatabaseHelper(this);
         recordButton = (Button) findViewById(R.id.recordButton);
         mChronometer = (Chronometer) findViewById(R.id.chronometer);
-        mNextButton = (Button) findViewById(R.id.button103);
+        mNextButton = (Button) findViewById(R.id.button10);
 
 
         recordButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                mChronometer.setText("0");
+
+                mChronometer.setBase(SystemClock.elapsedRealtime());
+                Session session = new Session();
+                mDbHelper.createSession(session);
+
                 promptSpeechInput();
             }
         });
@@ -116,7 +118,6 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
         mChronometer.stop();
 
 
-        //float timeElapsed = mEndTime - mStartTime;
 
         switch (requestCode) {
             case VOICE_RECOGNITION_REQUEST_CODE: {
@@ -127,7 +128,6 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
 
                     int filler = 0;
                     mWordCount = 0;
-                    //for(String s: result){
                     String s = result.get(0);
 
                     tokenizer = new StringTokenizer(s, " ");
@@ -138,7 +138,7 @@ public class StartSpeechRecognitionActivity extends AppCompatActivity {
                             filler++;
                         }
                     }
-                    mDbHelper.updateSession(filler, SessionContract.Session.FILLERS);
+                    mDbHelper.updateSession(10 - filler, SessionContract.Session.FILLERS);
                     //}
                     int speed = (int) (mWordCount / timeElapsed) * 60;
                     mDbHelper.updateSession(speed, SessionContract.Session.SPEED);
