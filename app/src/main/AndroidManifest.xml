@@ -4,13 +4,13 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-
     <uses-sdk android:minSdkVersion="7" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -30,25 +30,32 @@
         </activity>
         <activity
             android:name=".StartSpeechRecognitionActivity"
-            android:label="@string/title_activity_start_speech_recognition"/>
-
-
+            android:label="@string/title_activity_start_speech_recognition" />
         <activity
             android:name=".StartSpeechActivity"
-            android:label="@string/title_activity_start_speech"/>
+            android:label="@string/title_activity_start_speech" />
 
-        <!--<activity-->
-            <!--android:name=".Setting"-->
-            <!--android:label="@string/title_activity_setting"-->
-            <!--android:theme="@style/AppTheme.NoActionBar" />-->
-
+        <!-- <activity -->
+        <!-- android:name=".Setting" -->
+        <!-- android:label="@string/title_activity_setting" -->
+        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
 
         <activity
             android:name=".Result"
             android:label="@string/title_activity_result"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.Intro"
+            android:label="@string/title_activity_intro"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.StepOne"
+            android:label="@string/title_activity_step_one"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.StepTwo"
+            android:label="@string/title_activity_step_two"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

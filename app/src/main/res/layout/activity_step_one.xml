@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="carlhacks16.hearmeout.ui.Intro">
+    tools:context="carlhacks16.hearmeout.ui.StepOne">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -13,10 +13,9 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
 
-
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_intro" />
+    <include layout="@layout/content_step_one" />
 
 
 

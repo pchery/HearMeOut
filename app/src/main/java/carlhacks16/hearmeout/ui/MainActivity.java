@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 
 import carlhacks16.hearmeout.R;
@@ -23,6 +24,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageButton logobtn=(ImageButton)findViewById(R.id.logo);
+
+        logobtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(MainActivity.this, Intro.class));
+
+            }
+        });
+
 
 
 
