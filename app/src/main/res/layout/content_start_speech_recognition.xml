@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ebookfrenzy.audioapp.AudioAppActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        android:id="@+id/playButton"
-        android:layout_marginTop="113dp"
-        android:onClick="playAudio"
-        android:textAllCaps="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/recordButton"
-        android:layout_alignStart="@+id/recordButton"
-        android:layout_alignRight="@+id/pebbleStop"
-        android:layout_alignEnd="@+id/pebbleStop" />
 
     <Button
         android:layout_width="wrap_content"
@@ -31,35 +14,46 @@
         android:onClick="recordAudio"
         android:textAllCaps="false"
         android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/pebbleLaunch"
+        android:layout_toStartOf="@+id/pebbleLaunch" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"
+        android:id="@+id/playButton"
+        android:onClick="recordAudio"
+        android:textAllCaps="false"
+        android:layout_below="@+id/stopButton"
         android:layout_alignLeft="@+id/stopButton"
-        android:layout_alignStart="@+id/stopButton" />
+        android:layout_alignStart="@+id/stopButton"
+        android:layout_marginTop="63dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stop"
         android:id="@+id/stopButton"
-        android:layout_below="@+id/recordButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
-        android:onClick="stopAudio"
-        android:textAllCaps="false" />
+        android:onClick="recordAudio"
+        android:textAllCaps="false"
+        android:layout_below="@+id/movementDisplay"
+        android:layout_centerHorizontal="true" />
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Launch Pebble"
         android:id="@+id/pebbleLaunch"
-        android:layout_below="@+id/stopButton"
-        android:layout_alignRight="@+id/pebbleStop"
-        android:layout_alignEnd="@+id/pebbleStop" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stop Pebble"
         android:id="@+id/pebbleStop"
-        android:layout_below="@+id/pebbleLaunch"
+        android:layout_above="@+id/pebbleLaunch"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -69,4 +63,6 @@
         android:id="@+id/movementDisplay"
         android:layout_above="@+id/recordButton"
         android:layout_centerHorizontal="true" />
+
+
 </RelativeLayout>

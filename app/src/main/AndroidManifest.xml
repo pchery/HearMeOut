@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="carlhacks16.hearmeout">
+    package="carlhacks16.hearmeout"
+    android:versionCode="1"
+    android:versionName="1.0">
 
 
-
-    <uses-sdk
-        android:maxSdkVersion="8"
-        android:targetSdkVersion="17"/>
+    <uses-sdk android:minSdkVersion="7" />
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
@@ -31,16 +30,27 @@
         </activity>
         <activity
             android:name=".StartSpeechRecognitionActivity"
+            android:label="@string/title_activity_start_speech_recognition">
+        </activity>
+
+
+        <activity
+            android:name=".StartSpeechActivity"
             android:label="@string/title_activity_start_speech">
-            </activity>
-    <activity
-            android:name=".Setting"
-            android:label="@string/title_activity_setting"
-            android:theme="@style/AppTheme.NoActionBar" />
+        </activity>
+
+        <!--<activity-->
+            <!--android:name=".Setting"-->
+            <!--android:label="@string/title_activity_setting"-->
+            <!--android:theme="@style/AppTheme.NoActionBar" />-->
+
+
         <activity
             android:name=".Result"
             android:label="@string/title_activity_result"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.widget.Button;
 
 
 import carlhacks16.hearmeout.R;
+import carlhacks16.hearmeout.StartSpeechActivity;
 import carlhacks16.hearmeout.StartSpeechRecognitionActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,17 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         Button btn = (Button)findViewById(R.id.button);
 
@@ -40,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(MainActivity.this, StartSpeechRecognitionActivity.class));
+                startActivity(new Intent(MainActivity.this, StartSpeechActivity.class));
 
             }
         });

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="325dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:max="4000"
+        android:layout_marginTop="100dp"
+        android:progressDrawable="@drawable/progressbar"
+
+        android:layout_weight="0.01" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer1"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.01"
+        android:layout_marginTop="30dp"
+        android:textSize="100dp"
+        android:textColor="#fbb03f"/>
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round"
+        android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="How well did you do? - See Results."
+        android:background="@drawable/round3"
+        android:layout_marginTop="20dp"
+        android:id="@+id/button10"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.01" />
+
+</LinearLayout>
