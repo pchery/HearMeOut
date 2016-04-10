@@ -168,7 +168,6 @@ public class StartSpeechActivity extends Activity {
                     int state = data.getInteger(AppKey).intValue();
 
                     System.out.println("////////////////////////////////////////////////" + state);
-                    movementDisplay.setText(String.valueOf(state));
                     mDbHelper.updateSession(state, SessionContract.Session.MOVEMENT);
 
                 }
