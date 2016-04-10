@@ -15,25 +15,13 @@
 
     <Button
         android:id="@+id/button10"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
         android:background="@drawable/tryagain"
         android:layout_alignTop="@+id/button11"
         android:layout_toLeftOf="@+id/button11"
         android:layout_toStartOf="@+id/button11" />
 
-
-    <Button
-        android:id="@+id/button11"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:background="@drawable/save"
-        android:layout_marginRight="55dp"
-        android:textColor="@android:color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="60dp" />
 
     <Button
         android:background="@color/colorOrangeLight"
@@ -81,5 +69,27 @@
         android:id="@+id/button9"
         android:layout_below="@+id/button8"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="170dp"
+        android:layout_height="90dp"
+        android:background="@drawable/save"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="62dp"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="290dp"
+        android:layout_height="130dp"
+        android:id="@+id/imageView2"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/singleGraph"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/button9"
+        android:layout_alignStart="@+id/button9" />
 
 </RelativeLayout>
